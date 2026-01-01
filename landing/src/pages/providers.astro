@@ -1,0 +1,329 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Providers">
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl font-bold text-swarm-text mb-4">
+        Sovereign Compute Providers
+      </h1>
+      <p class="text-lg text-swarm-text-dim max-w-2xl mx-auto">
+        Providers are independent operators who contribute locally owned, air-gapped compute to the Swarm inference network.
+      </p>
+    </div>
+
+    <!-- No Lock-in Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🚫</div>
+        <div class="text-sm text-swarm-text-dim">no accounts</div>
+      </div>
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🚫</div>
+        <div class="text-sm text-swarm-text-dim">no schedulers</div>
+      </div>
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🚫</div>
+        <div class="text-sm text-swarm-text-dim">no mandatory uptime</div>
+      </div>
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🚫</div>
+        <div class="text-sm text-swarm-text-dim">no lock-in</div>
+      </div>
+    </div>
+
+    <p class="text-center text-swarm-text mb-16">
+      Providers choose when to participate and what work to execute.
+    </p>
+
+    <!-- What Providers Do -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">What Providers Do</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-sm font-medium text-swarm-success uppercase tracking-wider mb-4">Providers:</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">run inference workloads locally</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">select jobs directly from Swarmpool</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">choose execution mode per job (SOLO or PPL)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">submit cryptographic proofs of completed work</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">earn proportional rewards at epoch settlement</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-swarm-error uppercase tracking-wider mb-4">Providers do not:</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-error mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span class="text-swarm-text-dim">upload private data to a third party</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-error mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span class="text-swarm-text-dim">expose inbound APIs</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-error mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span class="text-swarm-text-dim">relinquish hardware control</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-swarm-border">
+        <p class="text-swarm-text text-center font-medium">
+          All execution happens on operator-owned racks.
+        </p>
+      </div>
+    </div>
+
+    <!-- Execution Modes -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Execution Modes</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-swarm-bg-elevated rounded-xl border border-swarm-border">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-swarm-honey/20 text-swarm-honey font-bold rounded text-sm">SOLO</span>
+          </div>
+          <ul class="space-y-2 text-sm text-swarm-text-dim">
+            <li>Winner-takes-miner-pool reward</li>
+            <li>Higher variance, higher upside</li>
+            <li>Ideal for fast or specialized hardware</li>
+          </ul>
+        </div>
+
+        <div class="p-6 bg-swarm-bg-elevated rounded-xl border border-swarm-border">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-swarm-blue/20 text-swarm-blue font-bold rounded text-sm">PPL</span>
+            <span class="text-swarm-text-muted text-xs">(Pay-Per-Load)</span>
+          </div>
+          <ul class="space-y-2 text-sm text-swarm-text-dim">
+            <li>Proportional payout by provable compute</li>
+            <li>Lower variance, predictable returns</li>
+            <li>Ideal for steady operators</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-center text-swarm-text-dim text-sm mt-6">
+        Providers select the mode per job.
+      </p>
+    </div>
+
+    <!-- Joining -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Joining as a Provider</h2>
+
+      <p class="text-swarm-text-dim mb-6">Joining the network requires:</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="p-4 bg-swarm-bg-elevated rounded-lg text-center">
+          <div class="text-swarm-text font-medium">local compute</div>
+        </div>
+        <div class="p-4 bg-swarm-bg-elevated rounded-lg text-center">
+          <div class="text-swarm-text font-medium">an ENS identity</div>
+        </div>
+        <div class="p-4 bg-swarm-bg-elevated rounded-lg text-center">
+          <div class="text-swarm-text font-medium">the swarm CLI</div>
+        </div>
+      </div>
+
+      <p class="text-swarm-success text-center font-medium mb-6">There is no approval process.</p>
+
+      <div class="bg-swarm-bg-dark rounded-lg p-4 font-mono text-sm mb-6">
+        <code class="text-swarm-text-dim">
+          <span class="text-swarm-text-muted">$</span>
+          <span class="text-swarm-honey">swarm</span> init --provider <span class="text-swarm-success">miner.yourname.eth</span>
+        </code>
+      </div>
+
+      <p class="text-swarm-text-dim mb-4">Once registered, providers may:</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div class="px-3 py-2 bg-swarm-bg-elevated rounded text-center text-sm text-swarm-text-dim">watch the pool</div>
+        <div class="px-3 py-2 bg-swarm-bg-elevated rounded text-center text-sm text-swarm-text-dim">remain idle</div>
+        <div class="px-3 py-2 bg-swarm-bg-elevated rounded text-center text-sm text-swarm-text-dim">execute jobs</div>
+        <div class="px-3 py-2 bg-swarm-bg-elevated rounded text-center text-sm text-swarm-text-dim">leave at any time</div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-swarm-text-dim">Idle compute is allowed.</p>
+        <p class="text-swarm-text font-medium">Participation is voluntary.</p>
+      </div>
+    </div>
+
+    <!-- Canon Rule -->
+    <div class="bg-gradient-to-r from-swarm-blue/10 to-swarm-honey/10 border border-swarm-border rounded-xl p-8 text-center">
+      <h2 class="text-sm font-medium text-swarm-text-muted uppercase tracking-wider mb-4">Canon Rule</h2>
+      <p class="text-xl text-swarm-text font-medium mb-2">Providers are sovereign.</p>
+      <p class="text-xl text-swarm-text font-medium mb-2">They choose when to work.</p>
+      <p class="text-xl text-swarm-blue font-medium">Proof determines payment.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a href="/join" class="inline-flex items-center gap-2 px-8 py-3 bg-swarm-blue hover:bg-swarm-blue-light text-white font-semibold rounded-lg transition-colors">
+        Become a Provider
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="max-w-4xl mx-auto px-6 py-16 border-t border-swarm-border">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-swarm-text mb-4">How It Works</h2>
+    </div>
+
+    <div class="space-y-8">
+      <!-- Step 1 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+          1
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Jobs Are Published</h3>
+          <p class="text-swarm-text-dim mb-3">
+            Clients or controllers publish inference jobs to Swarmpool as signed, immutable IPFS snapshots.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">task description</span>
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">reward</span>
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">execution mode</span>
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">epoch scope</span>
+          </div>
+          <p class="text-sm text-swarm-text mt-3">Opportunity is visible before compute is committed.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+          2
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Providers Choose</h3>
+          <p class="text-swarm-text-dim mb-3">
+            Providers watch the pool and decide: whether to participate, which jobs to run, which execution mode to use.
+          </p>
+          <p class="text-sm text-swarm-text">There is no assignment. No queue. No scheduler.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+          3
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Compute Runs Locally</h3>
+          <p class="text-swarm-text-dim mb-3">
+            Inference executes on air-gapped, operator-owned, physically controlled hardware.
+          </p>
+          <p class="text-sm text-swarm-success">Data and models never leave the provider's environment.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+          4
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Proof Is Submitted</h3>
+          <p class="text-swarm-text-dim mb-3">
+            After execution, providers publish Proof-of-Compute snapshots to IPFS.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">cryptographic signatures</span>
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">compute contribution</span>
+            <span class="px-2 py-1 bg-swarm-bg-card border border-swarm-border rounded text-xs text-swarm-text-muted">output references</span>
+          </div>
+          <p class="text-sm text-swarm-warning mt-3">Unverifiable work is ignored.</p>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+          5
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Epochs Settle</h3>
+          <p class="text-swarm-text-dim mb-3">
+            At epoch close: Merlin aggregates valid proofs, payouts are calculated deterministically, final results are sealed into SwarmLedger.
+          </p>
+          <p class="text-sm text-swarm-text">Settlement is transparent and auditable.</p>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="flex gap-6">
+        <div class="w-12 h-12 rounded-xl bg-swarm-honey/20 text-swarm-honey flex items-center justify-center font-bold flex-shrink-0">
+          6
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-swarm-text mb-2">Meaning Is Observed</h3>
+          <p class="text-swarm-text-dim mb-3">
+            SwarmOrb reads live and historical data to assess network health, detect congestion or imbalance, surface capacity signals.
+          </p>
+          <p class="text-sm text-swarm-text-muted">Orb observes — it never controls.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="mt-12 p-8 bg-swarm-bg-card border border-swarm-border rounded-xl text-center">
+      <p class="text-lg text-swarm-text-dim mb-1">Swarmpool exposes opportunity.</p>
+      <p class="text-lg text-swarm-text-dim mb-1">Providers execute locally.</p>
+      <p class="text-lg text-swarm-blue font-medium">Proof settles truth.</p>
+    </div>
+
+    <!-- Why This Matters -->
+    <div class="mt-8 text-center">
+      <p class="text-swarm-text-dim">
+        Traditional cloud compute hides demand behind opaque schedulers.
+      </p>
+      <p class="text-swarm-text font-medium mt-2">
+        Swarm makes demand visible — allowing operators to scale intelligently, not blindly.
+      </p>
+    </div>
+  </section>
+</Base>

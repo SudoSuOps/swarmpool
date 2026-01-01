@@ -32,11 +32,18 @@ import CurrentEpoch from '../components/CurrentEpoch.astro';
           A proof-of-compute protocol for air-gapped, operator-owned inference workloads.
         </p>
 
-        <p class="text-base text-swarm-text mb-8 max-w-xl mx-auto">
+        <p class="text-base text-swarm-text mb-6 max-w-xl mx-auto">
           <span class="text-swarm-text-dim">Medical imaging is a workload.</span>
           <br />
           <span class="text-swarm-blue font-medium">Compute sovereignty is the product.</span>
         </p>
+
+        <div class="flex items-center justify-center gap-2 text-sm text-swarm-text-muted mb-8">
+          <span>Execution modes:</span>
+          <span class="px-2 py-0.5 bg-swarm-honey/10 text-swarm-honey font-medium rounded">SOLO</span>
+          <span class="text-swarm-border">·</span>
+          <span class="px-2 py-0.5 bg-swarm-blue/10 text-swarm-blue font-medium rounded">PPL</span>
+        </div>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/join" class="px-8 py-3 bg-swarm-blue hover:bg-swarm-blue-light text-white font-semibold rounded-lg transition-colors shadow-glow">
@@ -65,10 +72,10 @@ import CurrentEpoch from '../components/CurrentEpoch.astro';
         change="+$15.60 today"
         icon="dollar"
       />
-      <StatsCard 
-        label="Active Providers" 
-        value="23" 
-        change="18 online"
+      <StatsCard
+        label="Registered Providers"
+        value="23"
+        change="18 watching pool"
         icon="server"
         highlight={true}
       />
