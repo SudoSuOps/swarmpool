@@ -27,3 +27,8 @@ npm-debug.log*
 
 # Rust
 Cargo.lock
+
+# Python
+__pycache__/
+*.egg-info/
+*.pyc
