@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Mock epoch data - in production, fetch from IPFS
+const epochs = [
+  { id: '048', name: 'Golf', status: 'active', jobs: 156, volume: 15.60, miner_pool: 11.70, hive_ops: 3.90, providers: 18, time_remaining: '42:18' },
+  { id: '047', name: 'Foxtrot', status: 'sealed', jobs: 342, volume: 34.20, miner_pool: 25.65, hive_ops: 8.55, providers: 21, sealed_at: '2025-12-31T23:00:00Z' },
+  { id: '046', name: 'Echo', status: 'sealed', jobs: 289, volume: 28.90, miner_pool: 21.68, hive_ops: 7.22, providers: 19, sealed_at: '2025-12-31T22:00:00Z' },
+  { id: '045', name: 'Delta', status: 'sealed', jobs: 401, volume: 40.10, miner_pool: 30.08, hive_ops: 10.02, providers: 22, sealed_at: '2025-12-31T21:00:00Z' },
+  { id: '044', name: 'Charlie', status: 'sealed', jobs: 256, volume: 25.60, miner_pool: 19.20, hive_ops: 6.40, providers: 17, sealed_at: '2025-12-31T20:00:00Z' },
+  { id: '043', name: 'Bravo', status: 'sealed', jobs: 312, volume: 31.20, miner_pool: 23.40, hive_ops: 7.80, providers: 20, sealed_at: '2025-12-31T19:00:00Z' },
+  { id: '042', name: 'Alpha', status: 'sealed', jobs: 198, volume: 19.80, miner_pool: 14.85, hive_ops: 4.95, providers: 15, sealed_at: '2025-12-31T18:00:00Z' },
+];
+
+const totalSealed = epochs.filter(e => e.status === 'sealed').length;
+const totalVolume = epochs.reduce((sum, e) => sum + e.volume, 0);
+const totalJobs = epochs.reduce((sum, e) => sum + e.jobs, 0);
+---
+
+<Base title="Epochs">
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-swarm-text mb-4">
+        Epochs
+      </h1>
+      <p class="text-lg text-swarm-text-dim max-w-2xl mx-auto">
+        Time-bounded settlement periods. Each epoch aggregates proofs and seals payouts to SwarmLedger.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold text-swarm-text mb-2">{totalSealed}</div>
+        <div class="text-sm text-swarm-text-dim">Epochs Sealed</div>
+      </div>
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold text-swarm-success mb-2">${totalVolume.toFixed(2)}</div>
+        <div class="text-sm text-swarm-text-dim">Total Volume</div>
+      </div>
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="text-3xl font-bold text-swarm-blue mb-2">{totalJobs.toLocaleString()}</div>
+        <div class="text-sm text-swarm-text-dim">Total Jobs</div>
+      </div>
+    </div>
+
+    <!-- Archive Link -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4 mb-8 text-center">
+      <span class="text-swarm-text-dim">Sealed epochs are archived on IPFS</span>
+      <span class="mx-2 text-swarm-border">→</span>
+      <a href="https://swarmepoch.eth.limo" target="_blank" rel="noopener noreferrer" class="text-swarm-blue hover:text-swarm-blue-light transition-colors font-medium">
+        swarmepoch.eth.limo
+      </a>
+    </div>
+
+    <!-- Epoch List -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="text-left text-xs text-swarm-text-muted uppercase tracking-wider border-b border-swarm-border">
+              <th class="px-6 py-4 font-medium">Epoch</th>
+              <th class="px-6 py-4 font-medium">Status</th>
+              <th class="px-6 py-4 font-medium">Jobs</th>
+              <th class="px-6 py-4 font-medium">Volume</th>
+              <th class="px-6 py-4 font-medium">Miner Pool</th>
+              <th class="px-6 py-4 font-medium">Hive Ops</th>
+              <th class="px-6 py-4 font-medium">Providers</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-swarm-border">
+            {epochs.map((epoch) => (
+              <tr class="hover:bg-swarm-bg-elevated/50 transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-swarm-text">#{epoch.id}</span>
+                    <span class="px-2 py-0.5 bg-swarm-blue/20 text-swarm-blue text-xs font-medium rounded">{epoch.name}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  {epoch.status === 'active' ? (
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-swarm-online animate-pulse"></span>
+                      <span class="text-sm text-swarm-success font-medium">Active</span>
+                      <span class="text-xs text-swarm-text-muted font-mono">{epoch.time_remaining}</span>
+                    </div>
+                  ) : (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-swarm-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span class="text-sm text-swarm-text-muted">Sealed</span>
+                    </div>
+                  )}
+                </td>
+                <td class="px-6 py-4">
+                  <span class="text-sm text-swarm-text">{epoch.jobs}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="text-sm font-medium text-swarm-text">${epoch.volume.toFixed(2)}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="text-sm text-swarm-success">${epoch.miner_pool.toFixed(2)}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="text-sm text-swarm-blue">${epoch.hive_ops.toFixed(2)}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="text-sm text-swarm-text-dim">{epoch.providers}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Canon -->
+    <div class="mt-12 text-center">
+      <p class="text-swarm-text-dim text-sm">
+        Merlin seals epochs. SwarmLedger records truth.
+      </p>
+      <p class="text-swarm-text-muted text-xs mt-2">
+        If it is not sealed in the ledger, it did not happen.
+      </p>
+    </div>
+  </section>
+</Base>

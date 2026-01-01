@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "updated": 1735689600000,
+  "cid": "bafybeihc6aeq2e6ys5uuccdm6bfd3gwhj467mdd3w2rbtkspwk3ylo6o2i",
+  "epoch": {
+    "id": "048",
+    "name": "Golf",
+    "start_time": 1735686000,
+    "jobs": 156,
+    "volume": 15.60,
+    "miner_pool": 11.70,
+    "hive_ops": 3.90,
+    "providers": 18,
+    "time_remaining": 2538
+  },
+  "stats": {
+    "total_jobs": 12847,
+    "total_volume": 1284.70,
+    "registered_providers": 23,
+    "watching_pool": 18,
+    "epochs_sealed": 47,
+    "current_epoch": "048"
+  },
+  "jobs": [
+    { "cid": "bafybeia3f2", "job_id": "j001", "model": "queenbee-spine", "reward": 0.10, "age": 3, "status": "pending", "mode": null, "provider": null },
+    { "cid": "bafybeib7c1", "job_id": "j002", "model": "queenbee-chest", "reward": 0.10, "age": 8, "status": "pending", "mode": null, "provider": null },
+    { "cid": "bafybeid4e9", "job_id": "j003", "model": "queenbee-spine", "reward": 0.10, "age": 12, "status": "claimed", "mode": "SOLO", "provider": "bumble70b.swarmbee.eth" },
+    { "cid": "bafybeif2a8", "job_id": "j004", "model": "queenbee-foot", "reward": 0.08, "age": 15, "status": "claimed", "mode": "PPL", "provider": "miner.alice.eth" },
+    { "cid": "bafybeig9h3", "job_id": "j005", "model": "queenbee-spine", "reward": 0.10, "age": 22, "status": "processing", "mode": "SOLO", "provider": "gpu-farm.eth" }
+  ],
+  "proofs": [
+    { "job_cid": "bafybeix7z2", "provider": "bumble70b.swarmbee.eth", "confidence": 72, "compute_seconds": 95, "earned": 0.075, "ago": 12, "mode": "SOLO" },
+    { "job_cid": "bafybeiy3w1", "provider": "miner.alice.eth", "confidence": 68, "compute_seconds": 102, "earned": 0.038, "ago": 34, "mode": "PPL" },
+    { "job_cid": "bafybeiz9v4", "provider": "miner.bob.eth", "confidence": 71, "compute_seconds": 88, "earned": 0.075, "ago": 60, "mode": "SOLO" },
+    { "job_cid": "bafybeia2u8", "provider": "gpu-farm.eth", "confidence": 65, "compute_seconds": 110, "earned": 0.045, "ago": 120, "mode": "PPL" },
+    { "job_cid": "bafybeib5t3", "provider": "bumble70b.swarmbee.eth", "confidence": 74, "compute_seconds": 91, "earned": 0.075, "ago": 180, "mode": "SOLO" }
+  ],
+  "providers": [
+    { "rank": 1, "ens": "bumble70b.swarmbee.eth", "jobs": 2847, "earnings": 213.52, "status": "online", "solo_wins": 1842, "ppl_jobs": 1005 },
+    { "rank": 2, "ens": "miner.alice.eth", "jobs": 1923, "earnings": 144.22, "status": "online", "solo_wins": 856, "ppl_jobs": 1067 },
+    { "rank": 3, "ens": "miner.bob.eth", "jobs": 1456, "earnings": 109.20, "status": "online", "solo_wins": 1123, "ppl_jobs": 333 },
+    { "rank": 4, "ens": "gpu-farm.eth", "jobs": 1201, "earnings": 90.07, "status": "online", "solo_wins": 234, "ppl_jobs": 967 },
+    { "rank": 5, "ens": "inference-labs.eth", "jobs": 854, "earnings": 64.05, "status": "busy", "solo_wins": 512, "ppl_jobs": 342 }
+  ]
+}

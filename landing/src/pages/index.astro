@@ -5,6 +5,7 @@ import JobQueue from '../components/JobQueue.astro';
 import RecentProofs from '../components/RecentProofs.astro';
 import ProviderHighlights from '../components/ProviderHighlights.astro';
 import CurrentEpoch from '../components/CurrentEpoch.astro';
+import LiveDashboard from '../components/LiveDashboard';
 ---
 
 <Base title="Dashboard">
@@ -57,67 +58,9 @@ import CurrentEpoch from '../components/CurrentEpoch.astro';
     </div>
   </section>
   
-  <!-- Stats Section -->
+  <!-- Live Dashboard -->
   <section class="max-w-7xl mx-auto px-6 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <StatsCard 
-        label="Total Jobs" 
-        value="12,847" 
-        change="+156 today"
-        icon="activity"
-      />
-      <StatsCard 
-        label="Volume (USDC)" 
-        value="$1,284.70" 
-        change="+$15.60 today"
-        icon="dollar"
-      />
-      <StatsCard
-        label="Registered Providers"
-        value="23"
-        change="18 watching pool"
-        icon="server"
-        highlight={true}
-      />
-      <StatsCard 
-        label="Epochs Sealed" 
-        value="47" 
-        change="#48 in progress"
-        icon="layers"
-      />
-    </div>
-  </section>
-  
-  <!-- Current Epoch Banner -->
-  <section class="max-w-7xl mx-auto px-6 py-4">
-    <CurrentEpoch 
-      epochId="048"
-      epochName="Golf"
-      jobs={156}
-      volume={15.60}
-      providers={18}
-      timeRemaining="42:18"
-    />
-  </section>
-  
-  <!-- Main Content Grid -->
-  <section class="max-w-7xl mx-auto px-6 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Job Queue - 2 columns -->
-      <div class="lg:col-span-2">
-        <JobQueue />
-      </div>
-      
-      <!-- Recent Proofs - 1 column -->
-      <div class="lg:col-span-1">
-        <RecentProofs />
-      </div>
-    </div>
-  </section>
-  
-  <!-- Provider Highlights -->
-  <section class="max-w-7xl mx-auto px-6 py-8">
-    <ProviderHighlights />
+    <LiveDashboard client:load />
   </section>
 
   <!-- Architecture Section -->
