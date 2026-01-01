@@ -1,0 +1,86 @@
+---
+// Mock data - in production, fetch from IPFS/API
+const providers = [
+  { rank: 1, ens: 'bumble70b.swarmbee.eth', jobs: 2847, earnings: 213.52, status: 'online', throughput: 45, isTop: true, soloWins: 1842, pplJobs: 1005 },
+  { rank: 2, ens: 'miner.alice.eth', jobs: 1923, earnings: 144.22, status: 'online', throughput: 32, soloWins: 856, pplJobs: 1067 },
+  { rank: 3, ens: 'miner.bob.eth', jobs: 1456, earnings: 109.20, status: 'online', throughput: 28, soloWins: 1123, pplJobs: 333 },
+  { rank: 4, ens: 'gpu-farm.eth', jobs: 1201, earnings: 90.07, status: 'online', throughput: 24, soloWins: 234, pplJobs: 967 },
+  { rank: 5, ens: 'inference-labs.eth', jobs: 854, earnings: 64.05, status: 'busy', throughput: 21, soloWins: 512, pplJobs: 342 },
+];
+
+const statusColors = {
+  online: { dot: 'bg-swarm-online', text: 'text-swarm-online' },
+  busy: { dot: 'bg-swarm-warning', text: 'text-swarm-warning' },
+  offline: { dot: 'bg-swarm-error', text: 'text-swarm-error' },
+};
+
+function truncateEns(ens: string) {
+  if (ens.length > 24) {
+    return ens.slice(0, 12) + '...' + ens.slice(-8);
+  }
+  return ens;
+}
+---
+
+<div class="bg-swarm-bg-card border border-swarm-border rounded-xl">
+  <!-- Header -->
+  <div class="px-6 py-4 border-b border-swarm-border flex items-center justify-between">
+    <h3 class="font-semibold text-swarm-text">Top Compute Providers</h3>
+    <a href="/providers" class="text-sm text-swarm-blue hover:text-swarm-blue-light transition-colors">
+      View Leaderboard →
+    </a>
+  </div>
+  
+  <!-- Provider Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-swarm-border">
+    {providers.map((provider) => {
+      const status = statusColors[provider.status as keyof typeof statusColors];
+      return (
+        <div class={`p-6 ${provider.isTop ? 'bg-gradient-to-br from-swarm-honey/5 to-transparent' : ''}`}>
+          <!-- Rank Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <div class={`
+              w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold
+              ${provider.isTop 
+                ? 'bg-swarm-honey/20 text-swarm-honey' 
+                : 'bg-swarm-bg-elevated text-swarm-text-dim'}
+            `}>
+              {provider.isTop ? '👑' : `#${provider.rank}`}
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class={`w-2 h-2 rounded-full ${status.dot}`}></span>
+              <span class={`text-xs ${status.text}`}>{provider.status}</span>
+            </div>
+          </div>
+          
+          <!-- Provider ENS -->
+          <div class="mb-4">
+            <div class="font-mono text-sm text-swarm-text truncate" title={provider.ens}>
+              {truncateEns(provider.ens)}
+            </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-swarm-text-muted">Jobs</span>
+              <span class="font-medium text-swarm-text">{provider.jobs.toLocaleString()}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-swarm-text-muted">Earnings</span>
+              <span class="font-medium text-swarm-success">${provider.earnings.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-swarm-text-muted">Mode Split</span>
+              <span class="font-medium">
+                <span class="text-swarm-honey">{provider.soloWins}</span>
+                <span class="text-swarm-text-muted">/</span>
+                <span class="text-swarm-blue">{provider.pplJobs}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>

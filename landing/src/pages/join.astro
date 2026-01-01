@@ -1,0 +1,297 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Join the Network">
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-swarm-text mb-4">
+        Become a Compute Provider
+      </h1>
+      <p class="text-lg text-swarm-text-dim max-w-2xl mx-auto">
+        Run your own air-gapped rack. Job-based execution with Proof-of-Compute settlement.
+        Get paid in USDC.
+      </p>
+    </div>
+    
+    <!-- Requirements -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Requirements</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <h3 class="text-sm font-medium text-swarm-text-dim uppercase tracking-wider">Hardware</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">NVIDIA GPU with 16GB+ VRAM</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">RTX 3090, 4090, 5090, A100, H100, etc.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">32GB+ System RAM</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">Stable internet (50Mbps+)</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="space-y-4">
+          <h3 class="text-sm font-medium text-swarm-text-dim uppercase tracking-wider">Software</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">Linux (Ubuntu 22.04+ recommended)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">CUDA 12.0+</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">IPFS daemon</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swarm-success mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-swarm-text-dim">Ethereum wallet for payouts</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Start -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Quick Start</h2>
+      
+      <div class="space-y-6">
+        <!-- Step 1 -->
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-lg bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+            1
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-swarm-text mb-2">Install the CLI</h3>
+            <div class="bg-swarm-bg-dark rounded-lg p-4 font-mono text-sm">
+              <div class="flex items-center justify-between">
+                <code class="text-swarm-text-dim">
+                  <span class="text-swarm-text-muted">$</span> 
+                  <span class="text-swarm-honey">cargo</span> install swarm-cli
+                </code>
+                <button class="text-swarm-text-muted hover:text-swarm-text transition-colors" title="Copy">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p class="text-sm text-swarm-text-muted mt-2">
+              Or download the binary from <a href="https://github.com/sudohash/swarm-cli/releases" class="text-swarm-blue hover:underline">GitHub Releases</a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-lg bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+            2
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-swarm-text mb-2">Initialize Your Provider (Genesis)</h3>
+            <div class="bg-swarm-bg-dark rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <code class="text-swarm-text-dim whitespace-pre">
+<span class="text-swarm-text-muted">$</span> <span class="text-swarm-honey">swarm</span> init \
+    --provider <span class="text-swarm-success">myprovider.swarmbee.eth</span> \
+    --wallet <span class="text-swarm-success">0x...</span> \
+    --gpus <span class="text-swarm-success">"RTX 5090,RTX 5090"</span>
+
+<span class="text-swarm-success">✓</span> Genesis snapshot created
+<span class="text-swarm-success">✓</span> Signed: 0x7a3b...
+<span class="text-swarm-success">✓</span> Published: bafybei...
+              </code>
+            </div>
+            <p class="text-sm text-swarm-text-muted mt-2">
+              One-time setup. Your genesis snapshot is published to IPFS.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-lg bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+            3
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-swarm-text mb-2">Watch for Jobs</h3>
+            <div class="bg-swarm-bg-dark rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <code class="text-swarm-text-dim whitespace-pre">
+<span class="text-swarm-text-muted">$</span> <span class="text-swarm-honey">swarm</span> watch --models <span class="text-swarm-success">queenbee-spine,queenbee-chest</span>
+
+<span class="text-swarm-success">✓</span> Connected to swarmpool.eth
+<span class="text-swarm-success">✓</span> Models: queenbee-spine, queenbee-chest
+
+<span class="text-swarm-text-muted">Watching for jobs...</span>
+<span class="text-swarm-honey">JOB</span> bafybei...a3f2  queenbee-spine  $0.10  2s ago
+              </code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-lg bg-swarm-blue/20 text-swarm-blue flex items-center justify-center font-bold flex-shrink-0">
+            4
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-swarm-text mb-2">Claim, Process, Prove</h3>
+            <div class="bg-swarm-bg-dark rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <code class="text-swarm-text-dim whitespace-pre">
+<span class="text-swarm-text-muted"># Claim the job (choose SOLO or PPL mode)</span>
+<span class="text-swarm-text-muted">$</span> <span class="text-swarm-honey">swarm</span> claim --job <span class="text-swarm-success">bafybei...a3f2</span> --mode <span class="text-swarm-honey">SOLO</span>
+
+<span class="text-swarm-text-muted"># Process and submit proof</span>
+<span class="text-swarm-text-muted">$</span> <span class="text-swarm-honey">swarm</span> prove --job <span class="text-swarm-success">bafybei...a3f2</span>
+
+<span class="text-swarm-success">✓</span> Inference complete (94s)
+<span class="text-swarm-success">✓</span> Proof published: bafybei...x7z2
+              </code>
+            </div>
+            <p class="text-sm text-swarm-text-muted mt-2">
+              <strong class="text-swarm-text">SOLO:</strong> Winner takes 75% of job fee.
+              <strong class="text-swarm-text ml-2">PPL:</strong> Proportional payout by compute time.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Step 5 -->
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-lg bg-swarm-success/20 text-swarm-success flex items-center justify-center font-bold flex-shrink-0">
+            5
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-swarm-text mb-2">Earn USDC</h3>
+            <p class="text-swarm-text-dim">
+              Merlin seals each epoch, calculating settlements. Your earnings accumulate in the ledger.
+              Withdraw anytime with <code class="text-swarm-honey">swarm withdraw</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Execution Modes -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Execution Modes</h2>
+      <p class="text-swarm-text-dim mb-6">When you claim a job, choose your payout strategy:</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-swarm-bg-elevated rounded-xl border border-swarm-border">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-swarm-honey/20 text-swarm-honey font-bold rounded text-sm">SOLO</span>
+            <span class="text-swarm-text font-medium">Winner Takes All</span>
+          </div>
+          <p class="text-swarm-text-dim text-sm mb-4">
+            First valid proof wins the entire miner pool (75% of job fee).
+            High risk, high reward. Best when you're confident and fast.
+          </p>
+          <div class="bg-swarm-bg-dark rounded-lg p-3 font-mono text-xs">
+            <div class="text-swarm-text-muted">Job: $10.00</div>
+            <div class="text-swarm-success">Winner: $7.50</div>
+            <div class="text-swarm-text-muted">Others: $0.00</div>
+          </div>
+        </div>
+
+        <div class="p-6 bg-swarm-bg-elevated rounded-xl border border-swarm-border">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-swarm-blue/20 text-swarm-blue font-bold rounded text-sm">PPL</span>
+            <span class="text-swarm-text font-medium">Pay-Per-Load</span>
+          </div>
+          <p class="text-swarm-text-dim text-sm mb-4">
+            Proportional payout based on compute time. All valid proofs earn.
+            Steadier income, shared risk. Best for consistent revenue.
+          </p>
+          <div class="bg-swarm-bg-dark rounded-lg p-3 font-mono text-xs">
+            <div class="text-swarm-text-muted">Job: $10.00 (3 proofs)</div>
+            <div class="text-swarm-success">90s compute: $3.38</div>
+            <div class="text-swarm-success">60s compute: $2.25</div>
+            <div class="text-swarm-success">50s compute: $1.87</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Economics -->
+    <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-8 mb-8">
+      <h2 class="text-xl font-semibold text-swarm-text mb-6">Economics</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="text-center p-6 bg-swarm-bg-elevated rounded-xl">
+          <div class="text-3xl font-bold text-swarm-success mb-2">75%</div>
+          <div class="text-sm text-swarm-text-dim">Miner Pool</div>
+          <div class="text-xs text-swarm-text-muted mt-1">Split among provers</div>
+        </div>
+        <div class="text-center p-6 bg-swarm-bg-elevated rounded-xl">
+          <div class="text-3xl font-bold text-swarm-blue mb-2">25%</div>
+          <div class="text-sm text-swarm-text-dim">Hive Ops</div>
+          <div class="text-xs text-swarm-text-muted mt-1">Network operations</div>
+        </div>
+        <div class="text-center p-6 bg-swarm-bg-elevated rounded-xl">
+          <div class="text-3xl font-bold text-swarm-text mb-2">~30</div>
+          <div class="text-sm text-swarm-text-dim">Jobs per Hour</div>
+          <div class="text-xs text-swarm-text-muted mt-1">Per RTX 5090</div>
+        </div>
+        <div class="text-center p-6 bg-swarm-bg-elevated rounded-xl">
+          <div class="text-3xl font-bold text-swarm-honey mb-2">$1,620</div>
+          <div class="text-sm text-swarm-text-dim">Monthly (est.)</div>
+          <div class="text-xs text-swarm-text-muted mt-1">Per GPU @ capacity</div>
+        </div>
+      </div>
+      
+      <div class="bg-swarm-bg-dark rounded-lg p-4 text-sm">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-swarm-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div class="text-swarm-text-dim">
+            <strong class="text-swarm-text">Note:</strong> Actual earnings depend on network demand and job availability. 
+            Early providers benefit from less competition. No guarantees — you earn based on jobs completed.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="text-center">
+      <div class="inline-flex flex-col sm:flex-row gap-4">
+        <a href="https://github.com/sudohash/swarm-cli" class="px-8 py-3 bg-swarm-blue hover:bg-swarm-blue-light text-white font-semibold rounded-lg transition-colors">
+          Get Started →
+        </a>
+        <a href="/docs" class="px-8 py-3 bg-swarm-bg-card hover:bg-swarm-bg-elevated border border-swarm-border text-swarm-text font-semibold rounded-lg transition-colors">
+          Read Documentation
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

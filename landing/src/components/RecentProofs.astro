@@ -1,0 +1,81 @@
+---
+// Mock data - in production, fetch from IPFS/API
+const proofs = [
+  { jobCid: 'bafybei...x7z2', provider: 'bumble70b.swarmbee.eth', confidence: 72, time: 95, earned: 0.075, ago: '12s', mode: 'SOLO' },
+  { jobCid: 'bafybei...y3w1', provider: 'miner.alice.eth', confidence: 68, time: 102, earned: 0.038, ago: '34s', mode: 'PPL' },
+  { jobCid: 'bafybei...z9v4', provider: 'miner.bob.eth', confidence: 71, time: 88, earned: 0.075, ago: '1m', mode: 'SOLO' },
+  { jobCid: 'bafybei...a2u8', provider: 'gpu-farm.eth', confidence: 65, time: 110, earned: 0.045, ago: '2m', mode: 'PPL' },
+  { jobCid: 'bafybei...b5t3', provider: 'bumble70b.swarmbee.eth', confidence: 74, time: 91, earned: 0.075, ago: '3m', mode: 'SOLO' },
+];
+
+const modeColors = {
+  SOLO: { bg: 'bg-swarm-honey/10', text: 'text-swarm-honey' },
+  PPL: { bg: 'bg-swarm-blue/10', text: 'text-swarm-blue' },
+};
+
+function getConfidenceColor(conf: number) {
+  if (conf >= 70) return 'text-swarm-success';
+  if (conf >= 60) return 'text-swarm-warning';
+  return 'text-swarm-error';
+}
+
+function truncateProvider(provider: string) {
+  if (provider.length > 20) {
+    return provider.slice(0, 8) + '...' + provider.slice(-8);
+  }
+  return provider;
+}
+---
+
+<div class="bg-swarm-bg-card border border-swarm-border rounded-xl h-full">
+  <!-- Header -->
+  <div class="px-6 py-4 border-b border-swarm-border flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <h3 class="font-semibold text-swarm-text">Recent Completions</h3>
+      <span class="w-2 h-2 rounded-full bg-swarm-success animate-pulse"></span>
+    </div>
+  </div>
+  
+  <!-- Proof List -->
+  <div class="divide-y divide-swarm-border">
+    {proofs.map((proof) => (
+      <div class="px-6 py-4 hover:bg-swarm-bg-elevated/50 transition-colors">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <svg class="w-4 h-4 text-swarm-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="font-mono text-sm text-swarm-text truncate">{proof.jobCid}</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-swarm-text-muted">
+              <span class="truncate" title={proof.provider}>{truncateProvider(proof.provider)}</span>
+              <span>•</span>
+              <span>{proof.ago}</span>
+            </div>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class={`text-sm font-semibold ${getConfidenceColor(proof.confidence)}`}>
+              {proof.confidence}%
+            </div>
+            <div class="text-xs text-swarm-text-muted">{proof.time}s</div>
+          </div>
+        </div>
+        <div class="mt-2 flex items-center gap-2">
+          <span class={`px-1.5 py-0.5 text-xs font-bold rounded ${modeColors[proof.mode as keyof typeof modeColors].bg} ${modeColors[proof.mode as keyof typeof modeColors].text}`}>
+            {proof.mode}
+          </span>
+          <span class="text-xs text-swarm-success">+${proof.earned.toFixed(3)}</span>
+          <span class="text-xs text-swarm-text-muted">earned</span>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <!-- Footer -->
+  <div class="px-6 py-3 border-t border-swarm-border">
+    <a href="/jobs?status=completed" class="text-sm text-swarm-blue hover:text-swarm-blue-light transition-colors">
+      View All Completions →
+    </a>
+  </div>
+</div>

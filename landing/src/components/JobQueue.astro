@@ -1,0 +1,100 @@
+---
+// Mock data - in production, fetch from IPFS/API
+const jobs = [
+  { cid: 'bafybei...a3f2', model: 'queenbee-spine', reward: 0.10, age: '3s', status: 'pending', mode: null },
+  { cid: 'bafybei...b7c1', model: 'queenbee-chest', reward: 0.10, age: '8s', status: 'pending', mode: null },
+  { cid: 'bafybei...d4e9', model: 'queenbee-spine', reward: 0.10, age: '12s', status: 'claimed', provider: 'bumble70b.swarmbee.eth', mode: 'SOLO' },
+  { cid: 'bafybei...f2a8', model: 'queenbee-foot', reward: 0.08, age: '15s', status: 'claimed', provider: 'miner.alice.eth', mode: 'PPL' },
+  { cid: 'bafybei...g9h3', model: 'queenbee-spine', reward: 0.10, age: '22s', status: 'processing', provider: 'gpu-farm.eth', mode: 'SOLO' },
+];
+
+const modeColors = {
+  SOLO: { bg: 'bg-swarm-honey/10', text: 'text-swarm-honey' },
+  PPL: { bg: 'bg-swarm-blue/10', text: 'text-swarm-blue' },
+};
+
+const statusColors = {
+  pending: { bg: 'bg-swarm-warning/10', text: 'text-swarm-warning', label: 'Pending' },
+  claimed: { bg: 'bg-swarm-blue/10', text: 'text-swarm-blue', label: 'Claimed' },
+  processing: { bg: 'bg-swarm-honey/10', text: 'text-swarm-honey', label: 'Processing' },
+};
+
+const modelLabels: Record<string, string> = {
+  'queenbee-spine': 'Spine MRI',
+  'queenbee-chest': 'Chest CT',
+  'queenbee-foot': 'Foot/Ankle',
+};
+---
+
+<div class="bg-swarm-bg-card border border-swarm-border rounded-xl">
+  <!-- Header -->
+  <div class="px-6 py-4 border-b border-swarm-border flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <h3 class="font-semibold text-swarm-text">Job Queue</h3>
+      <span class="px-2 py-0.5 bg-swarm-bg-elevated text-swarm-text-dim text-xs rounded-full">
+        {jobs.filter(j => j.status === 'pending').length} pending
+      </span>
+    </div>
+    <a href="/jobs" class="text-sm text-swarm-blue hover:text-swarm-blue-light transition-colors">
+      View All →
+    </a>
+  </div>
+  
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead>
+        <tr class="text-left text-xs text-swarm-text-muted uppercase tracking-wider">
+          <th class="px-6 py-3 font-medium">Job ID</th>
+          <th class="px-6 py-3 font-medium">Model</th>
+          <th class="px-6 py-3 font-medium">Reward</th>
+          <th class="px-6 py-3 font-medium">Mode</th>
+          <th class="px-6 py-3 font-medium">Age</th>
+          <th class="px-6 py-3 font-medium">Status</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-swarm-border">
+        {jobs.map((job) => {
+          const status = statusColors[job.status as keyof typeof statusColors];
+          return (
+            <tr class="hover:bg-swarm-bg-elevated/50 transition-colors">
+              <td class="px-6 py-4">
+                <span class="font-mono text-sm text-swarm-text">{job.cid}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-sm text-swarm-text-dim">{modelLabels[job.model] || job.model}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-sm font-medium text-swarm-text">${job.reward.toFixed(2)}</span>
+              </td>
+              <td class="px-6 py-4">
+                {job.mode ? (
+                  <span class={`px-2 py-0.5 text-xs font-bold rounded ${modeColors[job.mode as keyof typeof modeColors].bg} ${modeColors[job.mode as keyof typeof modeColors].text}`}>
+                    {job.mode}
+                  </span>
+                ) : (
+                  <span class="text-sm text-swarm-text-muted">-</span>
+                )}
+              </td>
+              <td class="px-6 py-4">
+                <span class="text-sm text-swarm-text-muted">{job.age}</span>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class={`px-2 py-1 text-xs font-medium rounded ${status.bg} ${status.text}`}>
+                    {status.label}
+                  </span>
+                  {job.provider && (
+                    <span class="text-xs text-swarm-text-muted truncate max-w-[120px]" title={job.provider}>
+                      {job.provider}
+                    </span>
+                  )}
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</div>

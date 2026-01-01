@@ -1,0 +1,62 @@
+---
+interface Props {
+  epochId: string;
+  epochName: string;
+  jobs: number;
+  volume: number;
+  providers: number;
+  timeRemaining: string;
+}
+
+const { epochId, epochName, jobs, volume, providers, timeRemaining } = Astro.props;
+
+// Calculate payout split (75% miner pool, 25% hive ops)
+const minerPool = volume * 0.75;
+const hiveOps = volume * 0.25;
+---
+
+<div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-4">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <!-- Epoch Info -->
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-swarm-online animate-pulse"></span>
+        <span class="text-sm font-medium text-swarm-text-dim">CURRENT EPOCH</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-lg font-bold text-swarm-text">#{epochId}</span>
+        <span class="px-2 py-0.5 bg-swarm-blue/20 text-swarm-blue text-sm font-medium rounded">{epochName}</span>
+      </div>
+    </div>
+    
+    <!-- Stats -->
+    <div class="flex flex-wrap items-center gap-6 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="text-swarm-text-muted">Jobs:</span>
+        <span class="font-semibold text-swarm-text">{jobs}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-swarm-text-muted">Volume:</span>
+        <span class="font-semibold text-swarm-text">${volume.toFixed(2)}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-swarm-text-muted">Miner Pool:</span>
+        <span class="font-semibold text-swarm-success">${minerPool.toFixed(2)}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-swarm-text-muted">Hive Ops:</span>
+        <span class="font-semibold text-swarm-blue">${hiveOps.toFixed(2)}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-swarm-text-muted">Providers:</span>
+        <span class="font-semibold text-swarm-text">{providers}</span>
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1.5 bg-swarm-bg-elevated rounded-lg">
+        <svg class="w-4 h-4 text-swarm-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="font-mono text-swarm-text">{timeRemaining}</span>
+      </div>
+    </div>
+  </div>
+</div>

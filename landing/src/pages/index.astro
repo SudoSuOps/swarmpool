@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+import StatsCard from '../components/StatsCard.astro';
+import JobQueue from '../components/JobQueue.astro';
+import RecentProofs from '../components/RecentProofs.astro';
+import ProviderHighlights from '../components/ProviderHighlights.astro';
+import CurrentEpoch from '../components/CurrentEpoch.astro';
+---
+
+<Base title="Dashboard">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-swarm-blue/10 to-transparent pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-swarm-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 py-16 relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <!-- Live Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-swarm-bg-card border border-swarm-border mb-6">
+          <span class="w-2 h-2 rounded-full bg-swarm-online animate-pulse"></span>
+          <span class="text-sm text-swarm-text-dim">Network Live</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="text-swarm-text">Sovereign</span>
+          <span class="text-swarm-blue"> Inference</span>
+          <span class="text-swarm-text"> Network</span>
+        </h1>
+
+        <p class="text-lg text-swarm-text-dim mb-6 max-w-2xl mx-auto">
+          A proof-of-compute protocol for air-gapped, operator-owned inference workloads.
+        </p>
+
+        <p class="text-base text-swarm-text mb-8 max-w-xl mx-auto">
+          <span class="text-swarm-text-dim">Medical imaging is a workload.</span>
+          <br />
+          <span class="text-swarm-blue font-medium">Compute sovereignty is the product.</span>
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/join" class="px-8 py-3 bg-swarm-blue hover:bg-swarm-blue-light text-white font-semibold rounded-lg transition-colors shadow-glow">
+            Become a Provider
+          </a>
+          <a href="/docs" class="px-8 py-3 bg-swarm-bg-card hover:bg-swarm-bg-elevated border border-swarm-border text-swarm-text font-semibold rounded-lg transition-colors">
+            View Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="max-w-7xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <StatsCard 
+        label="Total Jobs" 
+        value="12,847" 
+        change="+156 today"
+        icon="activity"
+      />
+      <StatsCard 
+        label="Volume (USDC)" 
+        value="$1,284.70" 
+        change="+$15.60 today"
+        icon="dollar"
+      />
+      <StatsCard 
+        label="Active Providers" 
+        value="23" 
+        change="18 online"
+        icon="server"
+        highlight={true}
+      />
+      <StatsCard 
+        label="Epochs Sealed" 
+        value="47" 
+        change="#48 in progress"
+        icon="layers"
+      />
+    </div>
+  </section>
+  
+  <!-- Current Epoch Banner -->
+  <section class="max-w-7xl mx-auto px-6 py-4">
+    <CurrentEpoch 
+      epochId="048"
+      epochName="Golf"
+      jobs={156}
+      volume={15.60}
+      providers={18}
+      timeRemaining="42:18"
+    />
+  </section>
+  
+  <!-- Main Content Grid -->
+  <section class="max-w-7xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Job Queue - 2 columns -->
+      <div class="lg:col-span-2">
+        <JobQueue />
+      </div>
+      
+      <!-- Recent Proofs - 1 column -->
+      <div class="lg:col-span-1">
+        <RecentProofs />
+      </div>
+    </div>
+  </section>
+  
+  <!-- Provider Highlights -->
+  <section class="max-w-7xl mx-auto px-6 py-8">
+    <ProviderHighlights />
+  </section>
+
+  <!-- Architecture Section -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-swarm-text mb-4">The Protocol</h2>
+      <p class="text-swarm-text-dim max-w-2xl mx-auto">
+        Not models-as-a-service. Job-based execution with Proof-of-Compute settlement.
+        No scheduler, no dark room, no token.
+      </p>
+    </div>
+
+    <!-- Data Flow -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="w-12 h-12 rounded-xl bg-swarm-blue/20 text-swarm-blue flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-swarm-text mb-2">SwarmPool</h3>
+        <p class="text-sm text-swarm-text-dim mb-2">"What work is available?"</p>
+        <p class="text-xs text-swarm-text-muted">Jobs, claims, proofs published to IPFS mempool</p>
+      </div>
+
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="w-12 h-12 rounded-xl bg-swarm-success/20 text-swarm-success flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-swarm-text mb-2">SwarmLedger</h3>
+        <p class="text-sm text-swarm-text-dim mb-2">"What happened? Who earned?"</p>
+        <p class="text-xs text-swarm-text-muted">Epochs sealed by Merlin with settlement truth</p>
+      </div>
+
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6 text-center">
+        <div class="w-12 h-12 rounded-xl bg-swarm-honey/20 text-swarm-honey flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-swarm-text mb-2">SwarmOrb</h3>
+        <p class="text-sm text-swarm-text-dim mb-2">"What does it mean?"</p>
+        <p class="text-xs text-swarm-text-muted">Read-only analytics and visualization</p>
+      </div>
+    </div>
+
+    <!-- Execution Modes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 bg-swarm-honey/20 text-swarm-honey font-bold rounded text-sm">SOLO</span>
+          <span class="text-swarm-text font-medium">Winner Takes All</span>
+        </div>
+        <p class="text-sm text-swarm-text-dim mb-3">
+          First valid proof wins 75% of the job fee. Fast miners with confidence claim SOLO.
+        </p>
+        <div class="flex items-center gap-4 text-xs text-swarm-text-muted">
+          <span>High risk</span>
+          <span class="w-1 h-1 rounded-full bg-swarm-border"></span>
+          <span>High reward</span>
+          <span class="w-1 h-1 rounded-full bg-swarm-border"></span>
+          <span>Single winner</span>
+        </div>
+      </div>
+
+      <div class="bg-swarm-bg-card border border-swarm-border rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 bg-swarm-blue/20 text-swarm-blue font-bold rounded text-sm">PPL</span>
+          <span class="text-swarm-text font-medium">Pay-Per-Load</span>
+        </div>
+        <p class="text-sm text-swarm-text-dim mb-3">
+          Proportional payout by compute_seconds. All valid proofs earn their share.
+        </p>
+        <div class="flex items-center gap-4 text-xs text-swarm-text-muted">
+          <span>Steady income</span>
+          <span class="w-1 h-1 rounded-full bg-swarm-border"></span>
+          <span>Shared risk</span>
+          <span class="w-1 h-1 rounded-full bg-swarm-border"></span>
+          <span>Multiple winners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="bg-gradient-to-r from-swarm-bg-card to-swarm-bg-elevated rounded-2xl border border-swarm-border p-8 md:p-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Have GPU Compute?
+            <span class="text-swarm-blue"> Start Earning.</span>
+          </h2>
+          <p class="text-swarm-text-dim mb-6">
+            Run your own air-gapped rack. Process jobs on your terms.
+            Proof-of-Compute settlement. Get paid in USDC.
+          </p>
+          <ul class="space-y-3 text-swarm-text-dim mb-6">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swarm-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              RTX 3090, 4090, 5090, A100, H100
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swarm-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              $0.075+ per job (75% of fees)
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swarm-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              No lock-in, withdraw anytime
+            </li>
+          </ul>
+          <a href="/join" class="inline-flex items-center gap-2 px-6 py-3 bg-swarm-blue hover:bg-swarm-blue-light text-white font-semibold rounded-lg transition-colors">
+            Join the Network
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <!-- Illustration placeholder -->
+          <div class="relative">
+            <div class="w-full aspect-square bg-gradient-to-br from-swarm-blue/20 to-swarm-honey/10 rounded-2xl border border-swarm-border flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-6xl mb-4">🐝</div>
+                <div class="text-swarm-text-dim font-mono text-sm">
+                  <div>avg ~30 jobs/hr</div>
+                  <div>~$2.25/hr per GPU</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

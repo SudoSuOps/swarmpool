@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Sovereign Inference Network - Air-gapped, operator-owned GPU racks with Proof-of-Compute settlement" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>{title} | SwarmPool</title>
+  </head>
+  <body class="bg-swarm-bg-dark text-swarm-text min-h-screen font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-swarm-bg-dark/80 backdrop-blur-lg border-b border-swarm-border">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-swarm-blue to-swarm-blue-dark flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span class="text-xl font-semibold text-swarm-text">SwarmPool</span>
+          </a>
+          
+          <!-- Nav Links -->
+          <div class="hidden md:flex items-center gap-8">
+            <a href="/" class="text-swarm-text-dim hover:text-swarm-text transition-colors">Dashboard</a>
+            <a href="/providers" class="text-swarm-text-dim hover:text-swarm-text transition-colors">Providers</a>
+            <a href="/epochs" class="text-swarm-text-dim hover:text-swarm-text transition-colors">Epochs</a>
+            <a href="/docs" class="text-swarm-text-dim hover:text-swarm-text transition-colors">Docs</a>
+          </div>
+          
+          <!-- CTA -->
+          <div class="flex items-center gap-4">
+            <a href="/join" class="px-5 py-2.5 bg-swarm-blue hover:bg-swarm-blue-light text-white font-medium rounded-lg transition-colors">
+              Join Network
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="pt-20">
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t border-swarm-border mt-24">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div class="col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-swarm-blue to-swarm-blue-dark flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="text-lg font-semibold">SwarmPool</span>
+            </div>
+            <p class="text-swarm-text-dim text-sm">
+              Sovereign inference protocol. Operator-owned racks.
+            </p>
+          </div>
+          
+          <!-- Network -->
+          <div>
+            <h4 class="font-semibold mb-4">Network</h4>
+            <ul class="space-y-2 text-sm text-swarm-text-dim">
+              <li><a href="/" class="hover:text-swarm-text">Dashboard</a></li>
+              <li><a href="/providers" class="hover:text-swarm-text">Providers</a></li>
+              <li><a href="/epochs" class="hover:text-swarm-text">Epochs</a></li>
+              <li><a href="/jobs" class="hover:text-swarm-text">Jobs</a></li>
+            </ul>
+          </div>
+          
+          <!-- Resources -->
+          <div>
+            <h4 class="font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-sm text-swarm-text-dim">
+              <li><a href="/docs" class="hover:text-swarm-text">Documentation</a></li>
+              <li><a href="/join" class="hover:text-swarm-text">Become a Provider</a></li>
+              <li><a href="https://github.com/sudohash" class="hover:text-swarm-text">GitHub</a></li>
+              <li><a href="https://swarmhive.eth.limo" class="hover:text-swarm-text">Model Registry</a></li>
+            </ul>
+          </div>
+          
+          <!-- Ecosystem -->
+          <div>
+            <h4 class="font-semibold mb-4">Ecosystem</h4>
+            <ul class="space-y-2 text-sm text-swarm-text-dim">
+              <li><a href="https://swarmorb.eth.limo" class="hover:text-swarm-text">SwarmOrb Explorer</a></li>
+              <li><a href="https://swarmhive.eth.limo" class="hover:text-swarm-text">SwarmHive Models</a></li>
+              <li><a href="https://swarmbee.eth.limo" class="hover:text-swarm-text">SwarmBee Workers</a></li>
+              <li><a href="https://swarmos.eth.limo" class="hover:text-swarm-text">SwarmOS</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-swarm-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-swarm-text-muted">
+            © 2026 SudoHash LLC. Florida, USA. Solar Powered
+          </p>
+          <div class="flex flex-col md:flex-row items-center gap-4 text-sm">
+            <div class="text-center md:text-right">
+              <span class="font-mono text-swarm-text-dim">merlin.swarmos.eth</span>
+              <p class="text-xs text-swarm-text-muted mt-1">
+                Observes, validates, and records — never executes.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 text-swarm-text-muted">
+              <span class="w-2 h-2 rounded-full bg-swarm-online animate-pulse"></span>
+              Network Operational
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0A1628;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #1E3A5F;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2A4A6F;
+  }
+  
+  /* Selection */
+  ::selection {
+    background: rgba(0, 102, 204, 0.3);
+  }
+</style>
