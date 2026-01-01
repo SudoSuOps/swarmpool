@@ -21,13 +21,16 @@ Swarm is a **proof-of-compute inference protocol** designed for air-gapped, oper
 - [CLI Reference](CLI.md)
 - [Merlin (Epoch Controller)](MERLIN.md)
 - [SwarmLedger](LEDGER.md)
+- [SwarmEpoch (Archive)](SWARMEPOCH.md)
 - [SwarmOrb](ORB.md)
 
 ---
 
-## Canon Rule
+## Canon Rules
 
 > If it is not written here and signed on IPFS, it is not part of the protocol.
+
+> Swarmpool is live. SwarmEpoch is final. ENS points. IPFS remembers.
 
 ---
 
