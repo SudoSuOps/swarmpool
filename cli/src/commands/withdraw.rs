@@ -103,7 +103,7 @@ pub async fn execute(
         "nonce": nonce,
     });
 
-    let signed = crypto::sign_json(&withdrawal, &private_key)?;
+    let signed = crypto::sign_json(&withdrawal, &private_key).await?;
     pb.finish_with_message(format!("{} Request signed", "✓".green()));
 
     // Submit withdrawal

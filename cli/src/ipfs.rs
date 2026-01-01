@@ -188,8 +188,23 @@ pub async fn write_genesis<T: Serialize>(provider: &str, data: &T) -> Result<Str
     write_to_path(&path, data).await
 }
 
-/// Fetch JSON from IPFS by CID
+/// Fetch JSON from IPFS by CID (tries local API first, then gateway)
 pub async fn fetch_json<T: DeserializeOwned>(cid: &str) -> Result<T> {
+    let client = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(10))
+        .build()?;
+
+    // Try local IPFS API first
+    let local_url = format!("{}/cat?arg={}", IPFS_API, cid);
+    if let Ok(response) = client.post(&local_url).send().await {
+        if response.status().is_success() {
+            if let Ok(data) = response.json().await {
+                return Ok(data);
+            }
+        }
+    }
+
+    // Fall back to public gateway
     let client = reqwest::Client::builder()
         .timeout(std::time::Duration::from_secs(30))
         .build()?;

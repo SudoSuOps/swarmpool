@@ -146,10 +146,9 @@ class IPFSPublisher:
         except Exception:
             pass
         
-        # Copy
+        # Copy (IPFS API needs both args passed separately)
         async with session.post(
-            f"{self.api_base}/files/cp",
-            params={"arg": f"/ipfs/{cid}", "arg": canonical_path}
+            f"{self.api_base}/files/cp?arg=/ipfs/{cid}&arg={canonical_path}"
         ) as resp:
             if resp.status != 200:
                 logger.warning(f"Failed to copy to canonical path: {canonical_path}")

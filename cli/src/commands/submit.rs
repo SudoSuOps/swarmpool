@@ -91,7 +91,7 @@ pub async fn execute(
     pb.set_message("Signing job...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    job.sig = Some(crypto::sign_snapshot(&job, &private_key)?);
+    job.sig = Some(crypto::sign_snapshot(&job, &private_key).await?);
     pb.finish_with_message(format!("{} Job signed", "✓".green()));
 
     // Write job to canonical IPFS path: /swarmpool/jobs/{job_id}.json

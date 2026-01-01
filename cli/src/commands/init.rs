@@ -67,7 +67,7 @@ pub async fn execute(
     pb.set_message("Signing init snapshot...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    registration.sig = Some(crypto::sign_snapshot(&registration, &private_key)?);
+    registration.sig = Some(crypto::sign_snapshot(&registration, &private_key).await?);
     pb.finish_with_message(format!("{} Snapshot signed", "✓".green()));
 
     // Write genesis to canonical IPFS path: /swarmpool/genesis/{provider}.json

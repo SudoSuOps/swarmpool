@@ -94,7 +94,7 @@ pub async fn execute(
     pb.set_message("Signing claim...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    claim.sig = Some(crypto::sign_snapshot(&claim, &private_key)?);
+    claim.sig = Some(crypto::sign_snapshot(&claim, &private_key).await?);
     pb.finish_with_message(format!("{} Claim signed", "✓".green()));
 
     // Publish claim to IPFS

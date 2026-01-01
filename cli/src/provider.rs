@@ -56,11 +56,13 @@ impl Provider {
             "{}:{}:{}:{}",
             job.job_id, output_cid, self.ens, timestamp
         );
-        let proof_hash = crypto::sha256_hash(proof_data.as_bytes());
+        let proof_hash = crypto::keccak256_hash(proof_data.as_bytes());
+        let proof_id = format!("proof-{}-{}", job.job_id, crypto::random_hex(4));
 
         let mut proof = ProofSnapshot {
             snapshot_type: "proof".to_string(),
             version: "1.0.0".to_string(),
+            proof_id,
             job_id: job.job_id.clone(),
             job_cid: "".to_string(), // Would be the actual job CID
             status: "completed".to_string(),
@@ -68,10 +70,11 @@ impl Provider {
             report_cid: Some(report_cid),
             metrics: ProofMetrics {
                 inference_seconds: inference_time,
+                compute_seconds: inference_time,  // For PPL proportional payout
                 confidence,
                 model_version: format!("{}-v1.0", job.model),
             },
-            worker: self.ens.clone(),
+            provider: self.ens.clone(),
             timestamp,
             proof_hash,
             sig: None,
@@ -79,7 +82,7 @@ impl Provider {
 
         // 4. Sign proof
         if let Some(key) = &self.private_key {
-            proof.sig = Some(crypto::sign_snapshot(&proof, key)?);
+            proof.sig = Some(crypto::sign_snapshot(&proof, key).await?);
         }
 
         // 5. Upload proof to IPFS

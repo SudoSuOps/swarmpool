@@ -5,9 +5,9 @@ use ethers::signers::{LocalWallet, Signer};
 use ethers::types::Signature;
 use serde::Serialize;
 
-/// Sign a snapshot/struct with EIP-191 personal sign
+/// Sign a snapshot/struct with EIP-191 personal sign (async)
 /// Uses keccak256 for hashing (Ethereum standard)
-pub fn sign_snapshot<T: Serialize>(data: &T, private_key: &str) -> Result<String> {
+pub async fn sign_snapshot<T: Serialize>(data: &T, private_key: &str) -> Result<String> {
     // Serialize to canonical JSON (sorted keys)
     let json = serde_json::to_string(data)?;
 
@@ -28,17 +28,18 @@ pub fn sign_snapshot<T: Serialize>(data: &T, private_key: &str) -> Result<String
     );
     let message_hash = ethers::utils::keccak256(message.as_bytes());
 
-    // Sign synchronously using block_on
-    let signature: Signature = tokio::runtime::Handle::current()
-        .block_on(wallet.sign_message(&message_hash[..]))
+    // Sign asynchronously
+    let signature: Signature = wallet
+        .sign_message(&message_hash[..])
+        .await
         .context("Failed to sign message")?;
 
     Ok(format!("0x{}", hex::encode(signature.to_vec())))
 }
 
 /// Sign raw JSON value, returns JSON with sig field added
-pub fn sign_json(data: &serde_json::Value, private_key: &str) -> Result<serde_json::Value> {
-    let sig = sign_snapshot(data, private_key)?;
+pub async fn sign_json(data: &serde_json::Value, private_key: &str) -> Result<serde_json::Value> {
+    let sig = sign_snapshot(data, private_key).await?;
 
     let mut signed = data.clone();
     if let Some(obj) = signed.as_object_mut() {

@@ -208,10 +208,12 @@ pub async fn execute(
 
     // compute_seconds = total time spent on this job (for PPL proportional payout)
     let compute_seconds = inference_time;
+    let proof_id = format!("proof-{}-{}", job.job_id, &crypto::random_hex(4));
 
     let mut proof = ProofSnapshot {
         snapshot_type: "proof".to_string(),
         version: "1.0.0".to_string(),
+        proof_id: proof_id.clone(),
         job_id: job.job_id.clone(),
         job_cid: job_cid.clone(),
         status: "completed".to_string(),
@@ -223,7 +225,7 @@ pub async fn execute(
             confidence,
             model_version: format!("{}-v1.0", job.model),
         },
-        worker: provider_ens.clone(),
+        provider: provider_ens.clone(),
         timestamp,
         proof_hash,
         sig: None,
@@ -239,7 +241,7 @@ pub async fn execute(
     pb.set_message("Signing proof...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    proof.sig = Some(crypto::sign_snapshot(&proof, &private_key)?);
+    proof.sig = Some(crypto::sign_snapshot(&proof, &private_key).await?);
     pb.finish_with_message(format!("{} Proof signed", "✓".green()));
 
     // Write proof to canonical IPFS path: /swarmpool/proofs/{job_id}.json
@@ -252,7 +254,6 @@ pub async fn execute(
     pb.set_message("Publishing proof to IPFS...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    let proof_id = format!("proof-{}-{}", job.job_id, &crypto::random_hex(4));
     let proof_cid = ipfs::write_proof(&proof_id, &proof).await?;
     pb.finish_with_message(format!("{} Proof: {}", "✓".green(), proof_cid.cyan()));
 

@@ -111,13 +111,14 @@ pub struct ProofSnapshot {
     #[serde(rename = "type")]
     pub snapshot_type: String,
     pub version: String,
+    pub proof_id: String,
     pub job_id: String,
     pub job_cid: String,
     pub status: String,
     pub output_cid: String,
     pub report_cid: Option<String>,
     pub metrics: ProofMetrics,
-    pub worker: String,
+    pub provider: String,
     pub timestamp: i64,
     pub proof_hash: String,
     #[serde(skip_serializing_if = "Option::is_none")]

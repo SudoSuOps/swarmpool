@@ -148,7 +148,7 @@ pub async fn execute(
     pb.set_message("Signing epoch seal...");
     pb.enable_steady_tick(Duration::from_millis(100));
 
-    epoch.sig = Some(crypto::sign_snapshot(&epoch, &private_key)?);
+    epoch.sig = Some(crypto::sign_snapshot(&epoch, &private_key).await?);
     pb.finish_with_message(format!("{} Epoch signed", "✓".green()));
 
     // Publish sealed epoch
