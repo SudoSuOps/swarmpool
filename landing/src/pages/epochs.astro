@@ -1,6 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
 
+// Genesis block - the first sealed epoch
+const genesis = {
+  epoch_id: 'epoch-0001',
+  name: 'Bravo',
+  status: 'sealed',
+  merkle_root: '0x4d97224eb3f4e8516305e4cda3011f7e9c9adc3e2553c4d12712b1604312bbe5',
+  cid: 'bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm',
+  signer: 'merlin.swarmos.eth',
+  sealed_at: '2026-01-01T17:02:32Z',
+  jobs: 1,
+  volume: 0.10,
+  miner_pool: 0.075,
+  hive_ops: 0.025,
+  first_provider: 'testprovider.swarmbee.eth'
+};
+
 // Mock epoch data - in production, fetch from IPFS
 const epochs = [
   { id: '048', name: 'Golf', status: 'active', jobs: 156, volume: 15.60, miner_pool: 11.70, hive_ops: 3.90, providers: 18, time_remaining: '42:18' },
@@ -113,6 +129,68 @@ const totalJobs = epochs.reduce((sum, e) => sum + e.jobs, 0);
             ))}
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- Genesis Block -->
+    <div class="mt-12 bg-gradient-to-br from-swarm-honey/10 via-swarm-bg-card to-swarm-blue/10 border border-swarm-honey/30 rounded-2xl p-8">
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-swarm-honey/20 border border-swarm-honey/30 mb-4">
+          <span class="text-swarm-honey font-bold">GENESIS BLOCK</span>
+        </div>
+        <h3 class="text-xl font-bold text-swarm-text">epoch-0001 (Bravo)</h3>
+        <p class="text-swarm-text-dim text-sm mt-2">The first sealed epoch. Where it all began.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-3">
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Status</span>
+            <span class="px-2 py-0.5 bg-swarm-success/20 text-swarm-success text-sm font-medium rounded">SEALED</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Sealed At</span>
+            <span class="text-swarm-text text-sm font-mono">2026-01-01 17:02:32 UTC</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Signer</span>
+            <span class="text-swarm-blue text-sm font-mono">{genesis.signer}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">First Provider</span>
+            <span class="text-swarm-success text-sm font-mono">{genesis.first_provider}</span>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Jobs</span>
+            <span class="text-swarm-text text-sm font-medium">{genesis.jobs}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Volume</span>
+            <span class="text-swarm-text text-sm font-medium">${genesis.volume.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Miner Pool (75%)</span>
+            <span class="text-swarm-success text-sm font-medium">${genesis.miner_pool.toFixed(3)}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-swarm-border/50">
+            <span class="text-swarm-text-dim text-sm">Hive Ops (25%)</span>
+            <span class="text-swarm-blue text-sm font-medium">${genesis.hive_ops.toFixed(3)}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-swarm-border/50 space-y-2">
+        <div class="flex flex-col md:flex-row md:items-center gap-2">
+          <span class="text-swarm-text-dim text-xs uppercase tracking-wide">Merkle Root:</span>
+          <span class="text-swarm-honey text-xs font-mono break-all">{genesis.merkle_root}</span>
+        </div>
+        <div class="flex flex-col md:flex-row md:items-center gap-2">
+          <span class="text-swarm-text-dim text-xs uppercase tracking-wide">CID:</span>
+          <a href={`https://ipfs.io/ipfs/${genesis.cid}`} target="_blank" rel="noopener noreferrer" class="text-swarm-blue text-xs font-mono hover:underline">{genesis.cid}</a>
+        </div>
       </div>
     </div>
 

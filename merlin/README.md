@@ -187,11 +187,31 @@ sudo systemctl start merlin
 sudo journalctl -u merlin -f
 ```
 
+## Genesis Block
+
+The first epoch sealed by Merlin. The anchor of SwarmLedger.
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  GENESIS BLOCK                                                        ║
+╠═══════════════════════════════════════════════════════════════════════╣
+║  Epoch:        epoch-0001 (Bravo)                                     ║
+║  Status:       SEALED                                                 ║
+║  Merkle Root:  0x4d97224eb3f4e8516305e4cda3011f7e9c9adc3e2553c4d...   ║
+║  CID:          bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqn...   ║
+║  Signer:       merlin.swarmos.eth                                     ║
+║  Sealed:       2026-01-01 17:02:32 UTC                                ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+**Full CID**: `bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm`
+
 ## Links
 
 - **Pool**: [swarmpool.eth.limo](https://swarmpool.eth.limo)
 - **Ledger**: [swarmledger.eth.limo](https://swarmledger.eth.limo)
 - **Explorer**: [swarmorb.eth.limo](https://swarmorb.eth.limo)
+- **Genesis**: [ipfs.io/ipfs/bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm](https://ipfs.io/ipfs/bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm)
 
 ---
 

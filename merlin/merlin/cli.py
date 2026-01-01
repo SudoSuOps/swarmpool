@@ -92,25 +92,57 @@ def print_banner():
 
 async def manual_seal(epoch_id: str):
     """Manually seal an epoch"""
-    print(f"Sealing epoch: {epoch_id}")
-    
+    print(f"🔒 Sealing epoch: {epoch_id}")
+
     config = load_config()
     signer = MerlinSigner(config.private_key)
     publisher = IPFSPublisher(config.ipfs_api)
-    
+
     # Check connection
     if not await publisher.check_connection():
         print("❌ IPFS connection failed")
         sys.exit(1)
-    
-    # Create minimal epoch manager and seal
+
+    # Load current epoch
+    epoch = await publisher.fetch_file(f"/swarmledger/epochs/{epoch_id}.json")
+    if not epoch:
+        print(f"❌ Epoch not found: {epoch_id}")
+        await publisher.close()
+        sys.exit(1)
+
+    if epoch.get("status") == "sealed":
+        print(f"⚠️  Epoch already sealed")
+        await publisher.close()
+        return
+
+    # Create epoch manager
     manager = EpochManager(config, signer, publisher)
-    
-    # In production: load existing epoch state
-    # For now: just demonstrate the seal process
-    print("⚠️  Manual seal not fully implemented")
-    print("    Use 'merlin run' to let Merlin manage epochs automatically")
-    
+    manager.current_epoch = epoch
+    manager.current_epoch_id = epoch_id
+    manager.epoch_number = epoch.get("epoch_number", 1)
+
+    # Load all proofs from IPFS
+    print("📥 Loading proofs from IPFS...")
+    proof_ids = await publisher.list_proofs()
+
+    for proof_id in proof_ids:
+        proof = await publisher.fetch_proof(proof_id)
+        if proof:
+            added = await manager.process_proof(proof)
+            if added:
+                print(f"   ✓ {proof_id}")
+
+    print(f"\n📊 Found {len(manager.current_proofs)} valid proof(s)")
+
+    # Seal the epoch
+    cid = await manager.seal_current_epoch()
+
+    if cid:
+        print(f"\n✅ Epoch sealed successfully!")
+        print(f"   CID: {cid}")
+    else:
+        print("❌ Seal failed")
+
     await publisher.close()
 
 

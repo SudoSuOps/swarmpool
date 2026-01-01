@@ -1,0 +1,25 @@
+{
+  "protocol": "SwarmPool",
+  "version": "1.0.0",
+  "genesis": {
+    "epoch_id": "epoch-0001",
+    "name": "Bravo",
+    "status": "sealed",
+    "merkle_root": "0x4d97224eb3f4e8516305e4cda3011f7e9c9adc3e2553c4d12712b1604312bbe5",
+    "cid": "bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm",
+    "signer": "merlin.swarmos.eth",
+    "timestamp": 1767286952,
+    "sealed_at": "2026-01-01T17:02:32Z"
+  },
+  "settlements": {
+    "total_volume_usdc": "0.10",
+    "provider_pool": 0.075,
+    "network_ops": 0.025,
+    "first_provider": "testprovider.swarmbee.eth"
+  },
+  "infrastructure": {
+    "controller": "merlin.swarmos.eth",
+    "pool": "swarmpool.eth",
+    "ledger_path": "/swarmledger/epochs/epoch-0001.json"
+  }
+}

@@ -177,11 +177,25 @@ Orb is a brain — not a hand.
 - ENS name (for identity)
 - NVIDIA GPU with CUDA 12.0+ (for providers)
 
+## Genesis Block
+
+The first sealed epoch. The anchor of truth.
+
+```
+Epoch:        epoch-0001 (Bravo)
+Status:       SEALED
+Merkle Root:  0x4d97224eb3f4e8516305e4cda3011f7e9c9adc3e2553c4d12712b1604312bbe5
+CID:          bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm
+Signer:       merlin.swarmos.eth
+Sealed:       2026-01-01 17:02:32 UTC
+```
+
 ## Links
 
 - **Pool Dashboard**: [swarmpool.eth.limo](https://swarmpool.eth.limo)
 - **SwarmOrb**: [swarmorb.eth.limo](https://swarmorb.eth.limo)
 - **GitHub**: [github.com/sudohash/swarm-cli](https://github.com/sudohash/swarm-cli)
+- **Genesis Block**: [ipfs.io/ipfs/bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm](https://ipfs.io/ipfs/bafkreibg6e7lkkwuz4dmtkebp5ol74dpx5sgp3zwkmzs2diqnfgpes6vnm)
 
 ## License
 
